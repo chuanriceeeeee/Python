@@ -4,15 +4,13 @@
 # overwrite: "w" "w+"
 # add: "r+" read before write, "a" pure add
 # x: write only if file dosen't exist
-
+# all(judge condition + for x in xxx if xxx) if judge condition successfully pass then output true
 
 def get_prime_add(m: int, n: int) -> int:
     # judge prime number and add
     # include 2
-    summary = sum([
-        x for x in range(m + 1, n)
-        if len([_ for _ in range(2, x) if x % _ == 0]) == 0 or x == 2
-    ])
+    # attention! (x**0.5) is a float!!!
+    summary = sum([x for x in range(m+1,n) if all((x%i)!=0 for i in range(2 , int(x**0.5)+1))])
     return summary
 
 
